@@ -1,2 +1,2 @@
 # kiss-aarch64
-KISS ARM 64-bit
+KISS Linux ARM 64-bit
