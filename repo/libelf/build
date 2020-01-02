@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+sed -i 's/-I/-isystem /g' libelf.pc.in
+
+./configure \
+    --prefix=/usr \
+    --host=aarch64-linux-musl \
+    --enable-nls=auto
+
+make
+make prefix="$1/usr" install

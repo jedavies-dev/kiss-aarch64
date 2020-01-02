@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --build=aarch64-linux-musl \
+    --host=aarch64-linux-musl \
+    --enable-targets=aarch64-linux-musl \
+    --disable-multilib \
+    --disable-werror \
+    --with-mmap \
+    --with-system-zlib
+
+make
+make DESTDIR="$1" install
