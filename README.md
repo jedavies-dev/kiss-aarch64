@@ -1,6 +1,6 @@
 # [KISS Linux](https://getkiss.org/) for aarch64
 
-This is a repository containing an unofficial port of [KISS Linux](https://getkiss.org/) to the aarch64 Pinebook Pro platform.
+This is a repository containing an unofficial port of [KISS Linux](https://getkiss.org/) to the [aarch64](https://en.wikipedia.org/wiki/ARM_architecture#AArch64) [Pinebook Pro](https://www.pine64.org/pinebook-pro/) platform.
 
 
 ```Work in progress```
