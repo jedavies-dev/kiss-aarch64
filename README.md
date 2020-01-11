@@ -1,9 +1,9 @@
-# kiss-aarch64
-KISS Linux running on ARM 64-bit
+# [KISS Linux](https://getkiss.org/) for powerpc64le
+
+This is a repository containing an unofficial port of [KISS Linux](https://getkiss.org/) to the aarch64 Pinebook Pro platform.
+
 
 ```Work in progress```
-
-This is a repo for KISS Linux packages that are modified to work on aarch64.  Currently this is running on a [Pinebook Pro](https://www.pine64.org/pinebook-pro/).  
 
 Of the ```core``` set of packages, only 3 have had to be patched.  There will probably be more as I work through the other repos.
 
