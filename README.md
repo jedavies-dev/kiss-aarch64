@@ -1,4 +1,4 @@
-# [KISS Linux](https://getkiss.org/) for powerpc64le
+# [KISS Linux](https://getkiss.org/) for aarch64
 
 This is a repository containing an unofficial port of [KISS Linux](https://getkiss.org/) to the aarch64 Pinebook Pro platform.
 
