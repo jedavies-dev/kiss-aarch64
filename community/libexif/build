@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+cp /usr/share/automake-1.16/config.guess .
+
+./configure \
+    --prefix=/usr \
+    --disable-nls \
+    ac_cv_path_DOXYGEN=false
+
+make
+make DESTDIR="$1" install
