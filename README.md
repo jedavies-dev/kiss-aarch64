@@ -18,4 +18,5 @@ Next on the todo list:
  - Bootable image to flash to sd/mmc
  - Provide firefox-bin for convenience
  - More docs (separate website?)
+ - Provide instructions on how to run without any binary blobs
  
