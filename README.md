@@ -12,4 +12,10 @@ You can install the [root tarball](https://github.com/jedavies-dev/kiss-aarch64/
 
 Booting involves flashing u-boot to an SD/MMC drive.  Currently I am using an SD card with u-boot & kernel, with root on the NVMe drive.
 
-Xorg is now working OK.  Work now in progress for getting rust + Firefox done.
+Xorg is now working OK.  Also Rust + Firefox now build.
+
+Next on the todo list:
+ - Bootable image to flash to sd/mmc
+ - Provide firefox-bin for convenience
+ - More docs (separate website?)
+ 
