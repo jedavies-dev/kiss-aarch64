@@ -10,9 +10,11 @@ This is a repository containing an unofficial port of [KISS Linux](https://k1ss.
 # Installation
 You can install the [root tarball](https://github.com/jedavies-dev/kiss-aarch64/releases/download/0.1/kiss-chroot.tar.xz) from another distro, same as on x86_64.  See https://k1ss.org/install for general installation details.
 
-Booting involves either:
-1) Writing the ATF and u-boot to an SD/MMC drive and installing the tarball there
-2) Altering another distro's boot.txt to point to a drive containing the KISS root.
+This repo now includes a "uboot" package, which will place the requisite u-boot binaries in /boot.
+These can then be written to the device you wish to boot from.  See [this page](https://stikonas.eu/wordpress/2019/09/15/blobless-boot-with-rockpro64/) for details on how to write the u-boot binary to a block device.
+
+
+For details on building
 
 Next on the todo list:
  - Confirm all packages build, patch where required.
