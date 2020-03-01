@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+export BL31="/boot/bl31.elf"
+
+make rockpro64-rk3399_defconfig
+make
+
+ls -la
+
+mkdir -p $1/boot
+
+cp idbloader.img $1/boot/
+cp u-boot.itb $1/boot/
+mkdir -p $1/usr/bin
+cp tools/mkimage $1/usr/bin/

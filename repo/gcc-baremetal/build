@@ -1,0 +1,53 @@
+#!/bin/sh -e
+
+# Make sure gmp is built with generic options.
+cp -v gcc/gmp/configfsf.guess gcc/gmp/config.guess
+cp -v gcc/gmp/configfsf.sub   gcc/gmp/config.sub
+
+# Use lib not lib64 by default.
+sed -i '/m64=/s/lib64/lib/' gcc/gcc/config/i386/t-linux64
+sed -i 's/lib64/lib/'       gcc/gcc/config/i386/linux64.h
+
+# Build must happen outside of gcc source.
+mkdir -p gcc-build
+cd gcc-build
+
+export libat_cv_have_ifunc=no
+
+../gcc/configure \
+    --prefix=/usr/lib/arm-none-eabi \
+    --enable-checking=release \
+    --mandir=/usr/share/man \
+    --infodir=/usr/share/info \
+    --enable-languages=c,c++ \
+    --host=$(cc -dumpmachine) \
+    --build=$(cc -dumpmachine) \
+    --target=arm-none-eabi \
+    --disable-libssp \
+    --disable-libgomp \
+    --disable-multilib \
+    --disable-decimal-float \
+    --disable-libmudflap \
+    --disable-libquadmath \
+    --disable-libstdcxx-pch \
+    --disable-nls \
+    --disable-threads \
+    --disable-tls \
+    --disable-shared \
+    --disable-bootstrap \
+    --disable-multilib \
+    --disable-libffi \
+    --with-gnu-as \
+    --with-gnu-ld \
+    --with-cpu=cortex-a72.cortex-a53 \
+    --without-headers
+
+make all-gcc
+make all-target-libgcc
+make DESTDIR="$1" install-gcc
+make DESTDIR="$1" install-target-libgcc
+
+# Save 35MB.
+find "$1" -name libgtkpeer.a  -delete
+find "$1" -name libgjsmalsa.a -delete
+find "$1" -name libgij.a      -delete

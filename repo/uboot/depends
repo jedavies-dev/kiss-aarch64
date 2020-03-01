@@ -1,0 +1,4 @@
+binutils-baremetal
+gcc-baremetal
+atf
+dtc

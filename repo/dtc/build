@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+make
+mkdir $1/usr
+make PREFIX="$1/usr" install

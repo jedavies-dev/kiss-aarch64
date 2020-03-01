@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+export CC="/usr/lib/arm-none-eabi/bin/arm-none-eabi-gcc"
+export CXX="/usr/lib/arm-none-eabi/bin/arm-none-eabi-g++"
+export AR="/usr/lib/arm-none-eabi/bin/arm-none-eabi-ar"
+export LD="/usr/lib/arm-none-eabi/bin/arm-none-eabi-ld"
+export CFLAGS=" -fno-stack-protector "
+export CXXFLAGS=$CFLAGS
+export PATH=/usr/lib/arm-none-eabi/bin:$PATH
+
+make PLAT=rk3399
+
+mkdir -p $1/boot
+cp build/rk3399/release/bl31/bl31.elf $1/boot/
