@@ -1,1 +1,3 @@
-/var/db/kiss/repo/extra/mesa/checksums
+6153ba3f8cb0524bbfc08e4db76b408126b2d1be8f789dffe28d1a0461eedde4  mesa-20.0.1.tar.xz
+2984a6733e1d472796ceef37ad48c26f4a984bb18119bb2dbc37a44d8f6e75a4  Mako-1.1.1.tar.gz
+1ac4478371e7503abb52b0388d3f7bc93d9de0bcc1c044365728e5d9f6307a0b  panfrost.patch
