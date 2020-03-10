@@ -1,0 +1,14 @@
+# After modifying, run:
+# mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d boot.txt boot.scr
+
+part uuid ${devtype} ${devnum}:${bootpart} uuid
+setenv bootargs console=ttyS2,1500000 root=PARTUUID=${uuid} rw rootwait
+setenv fdtfile rk3399-pinebook-pro.dtb
+
+if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/Image; then
+  if load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile}; then
+    fdt addr ${fdt_addr_r}
+    fdt resize
+    booti ${kernel_addr_r} - ${fdt_addr_r};
+  fi;
+fi
