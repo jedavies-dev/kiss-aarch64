@@ -9,6 +9,5 @@ make
 mkdir -p "$1/boot"
 install -Dm600 idbloader.img "$1/boot/"
 install -Dm600 u-boot.itb    "$1/boot/"
-mkdir -p $1/usr/bin
 install -Dm600 tools/mkimage "$1/boot/"
 install -Dm600 boot.txt      "$1/boot/"

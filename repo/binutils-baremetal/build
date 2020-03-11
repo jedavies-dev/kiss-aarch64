@@ -8,10 +8,8 @@ EOF
 chmod +x makeinfo
 export PATH=$PATH:$PWD
 
-# mkdir -p /usr/lib/arm-none-eabi
-
 ./configure \
-    --prefix=/usr/lib/arm-none-eabi \
+    --prefix=/usr \
     --build=aarch64-linux-musl \
     --host=aarch64-linux-musl \
     --target=arm-none-eabi \
