@@ -1,3 +1,3 @@
-38d6742e5c4c98a835de5d6e12a209e442fb3078a03b2c01bab6ea7afb25be6f  rustc-1.41.0-src.tar.xz
+aa5b4c0f2bac33cc26a11523fce9b0f120d2eff510ed148ae7c586501481ed04  rustc-1.42.0-src.tar.xz
 dfd626dd7ce6a2ea84a8701f9d5fd66ed010aa228e56b58a6798e06aa61a8393  rust-aarch64-linux-musl-bootstrap-1.41.0.tar.xz
-bb6f561f1a6ddd15b32126a024f3b0a4f66555797c1ebd6d1d17b7d604a083ae  musl.patch
+abb2acdfc50880da504225dd068f5ea381997cac9ebd23f371290aa8f29d438f  musl.patch
