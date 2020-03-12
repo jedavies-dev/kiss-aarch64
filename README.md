@@ -9,7 +9,7 @@ This is a repository containing an unofficial port of [KISS Linux](https://k1ss.
 Now includes firefox-bin package for convenience.
 
 # Installation
-You can install the [root tarball](https://github.com/jedavies-dev/kiss-aarch64/releases/download/0.1/kiss-chroot.tar.xz) from another distro, same as on x86_64.  See https://k1ss.org/install for general installation details.
+You can install the [root tarball](https://github.com/jedavies-dev/kiss-aarch64/releases/download/0.1.4/kiss-aarch64-chroot.tar.xz) from another distro, same as on x86_64.  See https://k1ss.org/install for general installation details.
 
 In short, you need to create a partition on an eMMC drive, extract the tarball to it, then write the bootloader files to the drive.  See [this page](https://stikonas.eu/wordpress/2019/09/15/blobless-boot-with-rockpro64/) for details on how to write the u-boot binary to a block device.
 
