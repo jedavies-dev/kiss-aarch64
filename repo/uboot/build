@@ -1,13 +1,19 @@
 #!/bin/sh -e
 
+patch -p1 < pbp.patch
+patch -p1 < emmc.patch
+patch -p1 < light.patch
+patch -p1 < usb.patch
+
 export BL31="/boot/bl31.elf"
 
-make rockpro64-rk3399_defconfig
+make pinebook_pro-rk3399_defconfig
 make
 
 # Install files
 mkdir -p "$1/boot"
+mkdir -p "$1/usr/bin"
 install -Dm600 idbloader.img "$1/boot/"
 install -Dm600 u-boot.itb    "$1/boot/"
-install -Dm600 tools/mkimage "$1/boot/"
 install -Dm600 boot.txt      "$1/boot/"
+install -Dm755 tools/mkimage "$1/usr/bin/"
