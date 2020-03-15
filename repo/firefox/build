@@ -17,7 +17,7 @@ export PATH=$PWD/autoconf/bin:$PATH
 export LDFLAGS="$LDFLAGS -Wl,-rpath=/usr/lib/firefox"
 export CC=${CC:-gcc}
 export CXX=${CXX:-g++}
-export CPLUS_INCLUDE_PATH=/usr/include/c++/9.2.0:/usr/include/c++/9.2.0/aarch64-linux-musl
+export CPLUS_INCLUDE_PATH=/usr/include/c++/9.3.0:/usr/include/c++/9.3.0/aarch64-linux-musl
 
 # Keep memory usage as low as possible.
 export LDFLAGS="$LDFLAGS -Wl,--as-needed -Wl,--no-keep-memory -Wl,--stats"
