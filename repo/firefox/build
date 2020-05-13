@@ -1,46 +1,97 @@
 #!/bin/sh -e
 
+# Down to one patch!!!! (Thank you to Michael Forney).
+patch -p1 < no-dbus.patch
+
 # Build autoconf 2.13 for Firefox's sole use.
 # See: https://bugzilla.mozilla.org/show_bug.cgi?id=104642
 (
     cd autoconf2.13
 
     ./configure \
-        --prefix="$PWD/../autoconf" \
+        --prefix="$PWD/../junk" \
         --program-suffix=-2.13
 
     make
     make install
 )
 
-export PATH=$PWD/autoconf/bin:$PATH
+# Build yasm for Firefox's sole use.
+# Firefox is the only package which needs it
+# and upstream is kinda dead.
+(
+    cd yasm
+
+    ./configure \
+        --prefix="$PWD/../junk"
+
+    make
+    make install
+)
+export PATH="$PWD/junk/bin:$PATH"
+
+mkdir -p build
+cd build
+
+# Bypass 'ccache' as it's totally useless when building
+# Firefox and only slows things down.
+export CC="${CC:-/usr/bin/gcc}"
+export CXX="${CXX:-/usr/bin/g++}"
+
 export LDFLAGS="$LDFLAGS -Wl,-rpath=/usr/lib/firefox"
-export CC=${CC:-gcc}
-export CXX=${CXX:-g++}
+export RUSTFLAGS="$RUSTFLAGS -Cdebuginfo=0"
+export MOZ_DEBUG_FLAGS=-g0
+export MOZ_NOSPAM=1
 export CPLUS_INCLUDE_PATH=/usr/include/c++/9.3.0:/usr/include/c++/9.3.0/aarch64-linux-musl
 
-# Keep memory usage as low as possible.
-export LDFLAGS="$LDFLAGS -Wl,--as-needed -Wl,--no-keep-memory -Wl,--stats"
-export MOZ_LINK_FLAGS=$LDFLAGS
-export MOZ_DEBUG_FLAGS=-g0
-export RUSTFLAGS=-Cdebuginfo=0
-export RUST_TARGET="aarch64-unknown-linux-musl"
+../configure \
+    --prefix=/usr \
+    --libdir=/usr/lib \
+    --enable-official-branding \
+    --enable-optimize="$CFLAGS -w" \
+    --enable-install-strip \
+    --enable-strip \
+    --enable-rust-simd \
+    --enable-application=browser \
+    --enable-release \
+    --enable-alsa \
+    --without-system-nspr \
+    --without-system-nss \
+    --with-system-jpeg \
+    --with-system-zlib \
+    --with-system-bz2 \
+    --with-system-png \
+    --with-system-libvpx \
+    --with-system-pixman \
+    --with-system-ffi \
+    --disable-gconf \
+    --disable-profiling \
+    --disable-accessibility \
+    --disable-tests \
+    --disable-system-extension-dirs \
+    --disable-parental-controls \
+    --disable-debug-symbols \
+    --disable-callgrind \
+    --disable-vtune \
+    --disable-gold \
+    --disable-jemalloc \
+    --disable-pulseaudio \
+    --disable-startup-notification \
+    --disable-crashreporter \
+    --disable-updater \
+    --disable-dbus \
+    --disable-necko-wifi
 
-for patch in *.patch; do
-    patch -p1 < "$patch"
-done
+make
+make DESTDIR="$1" install
 
-printf 'mk_add_options MOZ_MAKE_FLAGS="%s"\n' \
-    "${MAKEFLAGS:--j1 -l1}" >> mozconfig
-
-MOZ_NOSPAM=1 ./mach build
-DESTDIR="$1" ./mach install
-
+# Remove a lot of uneeded "stuff".
 rm -rf "$1/usr/include"
 rm -rf "$1/usr/lib/firefox-devel"
 rm -rf "$1/usr/share/idl"
-rm -rf "$1/usr/lib/firefox/gtk2"
+rm -rf "$1/usr/lib/firefox/gtk2" # Drop GTK+2 runtime dependency.
 rm -f  "$1/usr/lib/firefox/browser/features/fxmonitor@mozilla.org.xpi"
 rm -f  "$1/usr/lib/firefox/browser/features/screenshots@mozilla.org.xpi"
 rm -f  "$1/usr/lib/firefox/browser/features/webcompat-reporter@mozilla.org.xpi"
 rm -f  "$1/usr/lib/firefox/browser/features/webcompat@mozilla.org.xpi"
+rm -f  "$1/usr/lib/firefox/browser/features/doh-rollout@mozilla.org.xpi"

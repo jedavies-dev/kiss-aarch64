@@ -1,6 +1,7 @@
 #!/bin/sh -e
 
 patch -p1 < musl.patch
+patch -p1 < llvm10.patch
 
 # 'rust' checksums files in 'vendor/', but we patch a few files.
 for vendor in libc openssl-sys; do

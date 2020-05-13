@@ -51,3 +51,11 @@ ln -s gcc "$1/usr/bin/cc"
 
 # POSIX compliance.
 install -Dm755 ../c99 "$1/usr/bin/c99"
+
+# Symlink for LTO.
+{
+    mkdir -p "$1/usr/lib/bfd-plugins"
+
+    ln -s /usr/libexec/gcc/aarch64-linux-musl/10.1.0/liblto_plugin.so \
+          "$1/usr/lib/bfd-plugins/liblto_plugin.so"
+}
