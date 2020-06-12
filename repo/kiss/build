@@ -1,1 +1,21 @@
-/var/db/kiss/repo/core/kiss/build
+#!/bin/sh -e
+
+install -D kiss         "$1/usr/bin/kiss"
+install -D kiss_path.sh "$1/etc/profile.d/kiss_path.sh"
+install -Dm 644 kiss.1  "$1/usr/share/man/man1/kiss.1"
+
+# Add arch-specific path.
+sed -i 's/KISS_PATH=/KISS_PATH=\/var\/db\/kiss\/kiss-aarch64\/repo:/g' "$1/etc/profile.d/kiss_path.sh"
+
+# Install kiss utilities.
+cp contrib/* "$1/usr/bin/"
+
+# Install distribution documentation.
+for doc in faq guidestones install package-system package-manager; do
+    install -Dm644 "docs/site/$doc.txt" \
+                   "$1/usr/share/doc/kiss/$doc.txt"
+done
+
+# Install the Wiki documentation.
+cp -r wiki "$1/usr/share/doc/kiss/wiki"
+rm -f      "$1/usr/share/docs/kiss/wiki/README.txt"
