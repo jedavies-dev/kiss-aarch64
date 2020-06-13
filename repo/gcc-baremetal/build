@@ -39,7 +39,6 @@ export libat_cv_have_ifunc=no
     --disable-libffi \
     --with-gnu-as \
     --with-gnu-ld \
-    --with-cpu=cortex-a72.cortex-a53 \
     --without-headers
 
 make all-gcc

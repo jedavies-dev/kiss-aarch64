@@ -1,13 +1,14 @@
 #!/bin/sh -e
 
-patch -p1 < pbp.patch
-patch -p1 < emmc.patch
-patch -p1 < light.patch
-patch -p1 < usb.patch
+#for patch in *.patch; do
+#    patch -p1 < "$patch"
+#done
 
 export BL31="/boot/bl31.elf"
 
-make pinebook_pro-rk3399_defconfig
+find . -iname "*pine*"
+
+make pinebook-pro-rk3399_defconfig
 make
 
 # Install files

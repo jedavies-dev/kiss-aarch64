@@ -1,6 +1,2 @@
-https://gitlab.denx.de/u-boot/u-boot/-/archive/v2020.01/u-boot-v2020.01.tar.gz
+https://gitlab.denx.de/u-boot/u-boot/-/archive/v2020.07-rc4/u-boot-v2020.07-rc4.tar.gz
 files/boot.txt
-patches/pbp.patch
-patches/emmc.patch
-patches/light.patch
-patches/usb.patch
