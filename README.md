@@ -32,7 +32,7 @@ mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d boot.txt bo
 
 ### After installation
 
-The tarball is built with generic options. Once installed you should rebuild core with CFLAGS appropriate for the machine:
+The tarball is built with generic options. Once installed you can rebuild core with CFLAGS appropriate for the machine:
 ```
 export CFLAGS="-mtune=cortex-a72.cortex-a53 -mcpu=cortex-a72.cortex-a53 -pipe -O2"
 export CXXFLAGS=$CFLAGS
