@@ -1,10 +1,8 @@
 # [KISS Linux](https://k1ss.org/) for aarch64
 
-This is a repository containing an unofficial port of [KISS Linux](https://k1ss.org/) to the [aarch64](https://en.wikipedia.org/wiki/ARM_architecture#AArch64).  The tarball is built for generic aarch64, and is currently being tested on the [Pinebook Pro](https://www.pine64.org/pinebook-pro/).
+This is a repository containing an unofficial port of [KISS Linux](https://k1ss.org/) to [aarch64](https://en.wikipedia.org/wiki/ARM_architecture#AArch64).  The tarball is built for generic aarch64, currently being tested on the [Pinebook Pro](https://www.pine64.org/pinebook-pro/).
 
 ![KISS Linux aarch64 screenshot](https://raw.githubusercontent.com/jedavies-dev/kiss-aarch64/master/screenshot3.png "KISS Linux aarch64")
-
-```Work in progress```
 
 # Installation
 You can install the [root tarball](https://github.com/jedavies-dev/kiss-aarch64/releases/download/0.1.6/kiss-chroot-aarch64.tar.xz) from another distro, same as on x86_64.  See https://k1ss.org/install for general installation details.
