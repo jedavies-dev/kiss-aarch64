@@ -30,9 +30,8 @@ sudo dd if=u-boot.itb of=/dev/mmcblk1 seek=16384
 mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d boot.txt boot.scr
 ```
 
-### After installation
+### Suggested build flags for Pinebook Pro
 
-The tarball is built with generic options. Once installed you can rebuild core with CFLAGS appropriate for the machine:
 ```
 export CFLAGS="-mtune=cortex-a72.cortex-a53 -mcpu=cortex-a72.cortex-a53 -pipe -O2"
 export CXXFLAGS=$CFLAGS
@@ -41,4 +40,3 @@ cd /var/db/kiss/installed
 kiss b *
 ```
 Add the environment variables to your .profile to persist them.
-
