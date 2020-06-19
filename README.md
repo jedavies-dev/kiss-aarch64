@@ -8,7 +8,7 @@ This is a repository containing an unofficial port of [KISS Linux](https://k1ss.
 You can install the [root tarball](https://github.com/jedavies-dev/kiss-aarch64/releases/download/0.1.6/kiss-chroot-aarch64.tar.xz) from another distro, same as on x86_64.  See https://k1ss.org/install for general installation details.
 
 ## Pinebook Pro instructions
-Create a partition on the eMMC drive or SD card, format, extract the tarball to it (using sudo!), then write the bootloader files to the drive.  
+Create a partition on the eMMC drive or SD card, format, extract the tarball to it (using sudo), then write the bootloader files to the drive.  
 
 ### Building a kernel
 The Manjaro kernel is currently based on Linux 5.7 with patches for the Pinebook Pro: https://gitlab.manjaro.org/tsys/linux-pinebook-pro
