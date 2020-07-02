@@ -6,27 +6,19 @@ export LDFLAGS="-shared $LDFLAGS"
 # Patch unneeded in next release.
 patch -p1 < libelf-linux.patch
 
-echo "1"
-
 # Generate needed header file.
 common/native-elf-format | sed 's/unknown/EM_PPC/g' > common/native-elf-format.h
-
-echo "2"
 
 # Generate needed .c files using m4.
 for file in libelf/*.m4; do
     ${M4:-m4} -DSRCDIR=libelf "$file" > "${file%%.m4}.c"
 done
 
-echo "3"
-
 # Create all objects (.o).
 for file in libelf/*.c; do
     ${CC:-cc} -I./libelf -I./common $CFLAGS $CPPFLAGS -c \
         -o "${file%%.c}.o" "$file"
 done
-
-echo "4"
 
 mkdir -p "$1/usr/lib"
 

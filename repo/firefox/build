@@ -42,7 +42,7 @@ export LDFLAGS="$LDFLAGS -Wl,-rpath=/usr/lib/firefox"
 export RUSTFLAGS="$RUSTFLAGS -Cdebuginfo=0"
 export MOZ_DEBUG_FLAGS=-g0
 export MOZ_NOSPAM=1
-export CPLUS_INCLUDE_PATH=/usr/include/c++/9.3.0:/usr/include/c++/9.3.0/aarch64-linux-musl
+export CPLUS_INCLUDE_PATH=/usr/include/c++/10.1.0:/usr/include/c++/10.1.0/aarch64-linux-musl
 
 ../configure \
     --prefix=/usr \
@@ -59,12 +59,10 @@ export CPLUS_INCLUDE_PATH=/usr/include/c++/9.3.0:/usr/include/c++/9.3.0/aarch64-
     --without-system-nss \
     --with-system-jpeg \
     --with-system-zlib \
-    --with-system-bz2 \
     --with-system-png \
     --with-system-libvpx \
     --with-system-pixman \
     --with-system-ffi \
-    --disable-gconf \
     --disable-profiling \
     --disable-accessibility \
     --disable-tests \
@@ -76,10 +74,10 @@ export CPLUS_INCLUDE_PATH=/usr/include/c++/9.3.0:/usr/include/c++/9.3.0/aarch64-
     --disable-gold \
     --disable-jemalloc \
     --disable-pulseaudio \
-    --disable-startup-notification \
     --disable-crashreporter \
     --disable-updater \
     --disable-dbus \
+    --disable-tests \
     --disable-necko-wifi
 
 make
