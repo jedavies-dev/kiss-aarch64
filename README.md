@@ -36,7 +36,7 @@ mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d boot.txt bo
 ### Suggested build flags for Pinebook Pro
 
 ```
-export CFLAGS="-mtune=cortex-a72.cortex-a53 -mcpu=cortex-a72.cortex-a53 -pipe -O2"
+export CFLAGS="-march=armv8-a+crc+simd+crypto-pipe -O2"
 export CXXFLAGS=$CFLAGS
 export MAKEFLAGS="-j5"
 cd /var/db/kiss/installed
