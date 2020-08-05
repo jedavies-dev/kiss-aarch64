@@ -9,8 +9,6 @@ for vendor in libc openssl-sys; do
     sed -i 's/\("files":{\)[^}]*/\1/' "vendor/$vendor/.cargo-checksum.json"
 done
 
-# export LD_LIBRARY_PATH=/home/pokey/work/libressl/usr/lib:$(pwd)/usr/lib:$LD_LIBRARY_PATH
-
 cat > config.toml <<EOF
 [llvm]
 link-shared = true
@@ -30,8 +28,8 @@ locked-deps    = true
 vendor         = true
 sanitizers     = false
 profiler       = false
-rustc          = "$(pwd)/usr/bin/rustc"
-cargo          = "$(pwd)/usr/bin/cargo"
+rustc          = "$PWD/aarch64/bin/rustc"
+cargo          = "$PWD/aarch64/bin/cargo"
 local-rebuild  = true
 
 [install]
