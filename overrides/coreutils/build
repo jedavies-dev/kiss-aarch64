@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+patch -p0 < ls.patch
+
+export CFLAGS="$CFLAGS -static"
+
+./configure \
+    --prefix=/usr
+
+make
+make DESTDIR="$1" install

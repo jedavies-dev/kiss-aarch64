@@ -1,0 +1,4 @@
+https://static.rust-lang.org/dist/rustc-1.45.2-src.tar.xz
+https://github.com/jedavies-dev/kiss-aarch64/releases/download/0.1.8/rust-aarch64-linux-musl-bootstrap-1.45.2.tar.xz
+patches/musl.patch
+patches/libressl-3.1.X.patch
