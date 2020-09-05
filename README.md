@@ -7,6 +7,11 @@ This is a repository containing an unofficial port of [KISS Linux](https://k1ss.
 # Installation
 You can install the [root tarball](https://github.com/jedavies-dev/kiss-aarch64/releases/download/0.1.7/kiss-chroot-aarch64.tar.xz) from another distro, same as on x86_64.  See https://k1ss.org/install for general installation details.
 
+Note that you should check this repo onto your machine instead of the main KISS repo.  **This repo includes the main KISS repo as a submodule.** Once you've checked out this repo to your machine, your KISS_PATH should look something like this:
+
+``/home/myuser/kiss-aarch64/core:/home/myuser/kiss-aarch64/overrides:/home/myuser/kiss-aarch64/extra:/home/myuser/kiss-aarch64/modules/repo/extra:/home/myuser/kiss-aarch64/modules/repo/xorg``
+
+
 ## Pinebook Pro instructions
 Create a partition on the eMMC drive or SD card, format, extract the tarball to it (using sudo), then write the bootloader files to the drive.  
 
@@ -39,7 +44,7 @@ mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d boot.txt bo
 export CFLAGS="-march=armv8-a+crc+simd+crypto-pipe -O2"
 export CXXFLAGS=$CFLAGS
 export MAKEFLAGS="-j5"
-cd /var/db/kiss/installed
+cd /home/myuser/kiss-aarch64/core
 kiss b *
 ```
 Add the environment variables to your .profile to persist them.
