@@ -13,16 +13,6 @@ Note that you should check this repo onto your machine instead of the main KISS 
 
 When first checking out the repo and you've set your KISS_PATH, be sure to run `kiss u` before building anything. This is to ensure the modules are checked out.
 
-# FAQ
-## How come this repo isn't updated very often? Is it behind x86_64 KISS?
-This repo includes the main KISS Linux repo as a module.  Therefore whenever the main x86_64 repo is updated, this repo receives those updates also. There is no need for me to check version updates etc. to this repo - you will receive updates from the main KISS repo automatically.
-
-## Is Rust/Firefox provided?
-Not currently. I do not have time to maintail an aarch64-musl tarball since I am spending more time on [glasnost](https://glasnost.org/). Using a bootstrap from Void or Alpine may be possible in future.
-
-## How do I build a kernel for my device?
-Since the hardware configuration of ARM devices varies greatly, this will depend on your device. A good place to start is to determine what kernel your device is currently using (e.g. under some other distro).  Is it a mainline kernel or a fork? You can copy the config from /proc/config.gz to build a new kernel, or you may be able to boot using a pre-built kernel from another distro. Bootloaders also will vary a lot across devices, so a good starting point is to check the setup of a known working distro for your device.
-
 ## Pinebook Pro instructions
 Create a partition on the eMMC drive or SD card, format, extract the tarball to it (using sudo), then write the bootloader files to the drive.  
 
@@ -57,3 +47,14 @@ export CXXFLAGS=$CFLAGS
 export MAKEFLAGS="-j5"
 ```
 Add the environment variables to your .profile to persist them.
+
+
+# FAQ
+## How come this repo isn't updated very often? Is it behind x86_64 KISS?
+This repo includes the main KISS Linux repo as a module.  Therefore whenever the main x86_64 repo is updated, this repo receives those updates also. There is no need for me to check version updates etc. to this repo - you will receive updates from the main KISS repo automatically.
+
+## Is Rust/Firefox provided?
+Not currently. I do not have time to maintail an aarch64-musl tarball since I am spending more time on [glasnost](https://glasnost.org/). Using a bootstrap from Void or Alpine may be possible in future.
+
+## How do I build a kernel for my device?
+Since the hardware configuration of ARM devices varies greatly, this will depend on your device. A good place to start is to determine what kernel your device is currently using (e.g. under some other distro).  Is it a mainline kernel or a fork? You can copy the config from /proc/config.gz to build a new kernel, or you may be able to boot using a pre-built kernel from another distro. Bootloaders also will vary a lot across devices, so a good starting point is to check the setup of a known working distro for your device.
