@@ -1,3 +1,7 @@
+# This repo is now archived.
+Please check [Glasnost Linux](https://glasnost.org/) if you want to run KISS Linux on other architectures.
+
+
 # [KISS Linux](https://k1sslinux.org/) for aarch64
 
 This is a repository containing an unofficial port of [KISS Linux](https://k1sslinux.org/) to [aarch64](https://en.wikipedia.org/wiki/ARM_architecture#AArch64).  The tarball is built for generic aarch64, currently being tested on the [Pinebook Pro](https://www.pine64.org/pinebook-pro/).
